@@ -1,0 +1,68 @@
+ M README.md
+ M collector/README.md
+ M collector/audit_recordings.py
+ D collector/install_windows.bat
+ M collector/main.py
+ M collector/posture_collector/pose.py
+ M collector/posture_collector/process.py
+ M collector/posture_collector/storage.py
+ M collector/posture_collector/tracking.py
+ M collector/posture_collector/ui.py
+ M collector/posture_collector/ui_components.py
+ M collector/posture_collector/ui_layout.py
+ M collector/process_dataset.py
+ D collector/run_windows.bat
+ M collector/tests/test_phase01_contract.py
+ M collector/tests/test_pipeline_cli.py
+ M collector/tests/test_storage_and_capture.py
+ M collector/tests/test_ui.py
+ M requirements.txt
+ M scripts/test_phase01.sh
+?? collector/posture_collector/curation.py
+?? collector/posture_collector/dataset_audit.py
+?? collector/posture_collector/features.py
+?? collector/posture_collector/pose_quality.py
+?? collector/posture_collector/reextract.py
+?? collector/posture_collector/replay.py
+?? collector/posture_collector/replay_data.py
+?? collector/posture_collector/single_person.py
+?? collector/posture_collector/split_tools.py
+?? collector/tests/test_append_existing_dataset.py
+?? collector/tests/test_dataset_audit.py
+?? collector/tests/test_feature_v2.py
+?? collector/tests/test_phase16_curation.py
+?? collector/tests/test_replay_and_full_reextract.py
+?? collector/tests/test_runtime_layout.py
+?? collector/tests/test_single_person_reliability.py
+?? collector/tests/test_v3_reextract_and_split.py
+?? inference/__init__.py
+?? inference/pipeline.py
+?? inference/run.py
+?? notebooks/01_raw_eda_split.ipynb
+?? notebooks/01_raw_eda_split_v2.ipynb
+?? notebooks/02_process_eda_export.ipynb
+?? notebooks/02_process_eda_export_v2.ipynb
+?? notebooks/03_train_mlp.ipynb
+?? notebooks/03_train_mlp_v2.ipynb
+?? scripts/audit_clean_zip.py
+?? scripts/benchmark_sustained_pose.py
+?? scripts/benchmark_yolo_pose.py
+?? scripts/compare_pose_outputs.py
+?? scripts/export_clean_dataset.py
+?? scripts/export_onnx.py
+?? scripts/install_trained_model.sh
+?? scripts/migrate_collector_runtime.py
+?? scripts/pose_quality.py
+?? scripts/preflight_dataset.py
+?? scripts/prepare_yolo_pose.py
+?? scripts/reextract_pose.py
+?? scripts/reextract_pose_candidate.py
+?? scripts/test_v2.sh
+?? scripts/test_v3.sh
+?? scripts/validate_dataset.py
+?? shared/__init__.py
+?? shared/dataset_pipeline.py
+?? shared/mlp_model.py
+?? shared/pose_features.py
+?? shared/pose_training.py
+?? tests/

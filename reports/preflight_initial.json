@@ -1,0 +1,93 @@
+{
+  "dataset": "C:\\Users\\tienq\\PoseForge_Reposory\\artifact\\dataset_working\\Real_Posture_Dataset",
+  "clip_camera_records": 176,
+  "take_count": 88,
+  "people": 13,
+  "person_class_combinations": 78,
+  "raw_keypoints_present": 146,
+  "raw_keypoints_missing": [
+    "KIET_session_20261027_1124_L0_take_001_cam01",
+    "KIET_session_20261027_1124_L0_take_001_cam02",
+    "KNGUYEN_session_20261027_1124_L3_take_001_cam01",
+    "KNGUYEN_session_20261027_1124_L3_take_001_cam02",
+    "KNGUYEN_session_20261027_1124_L4_take_001_cam01",
+    "KNGUYEN_session_20261027_1124_L4_take_001_cam02",
+    "KNGUYEN_session_20261027_1124_L5_take_001_cam01",
+    "KNGUYEN_session_20261027_1124_L5_take_001_cam02",
+    "MINHLE_session_20261027_1124_L1_take_001_cam01",
+    "MINHLE_session_20261027_1124_L1_take_001_cam02",
+    "MINHLE_session_20261027_1124_L1_take_002_cam01",
+    "MINHLE_session_20261027_1124_L1_take_002_cam02",
+    "MINHLE_session_20261027_1124_L1_take_003_cam01",
+    "MINHLE_session_20261027_1124_L1_take_003_cam02",
+    "PHU_session_20261027_1124_L2_take_001_cam01",
+    "PHU_session_20261027_1124_L2_take_001_cam02",
+    "PHU_session_20261027_1124_L5_take_001_cam01",
+    "PHU_session_20261027_1124_L5_take_001_cam02",
+    "QBAO_session_20261027_1124_L2_take_001_cam01",
+    "QBAO_session_20261027_1124_L2_take_001_cam02",
+    "QBAO_session_20261027_1124_L4_take_001_cam01",
+    "QBAO_session_20261027_1124_L4_take_001_cam02",
+    "TDUY_session_20261027_1124_L1_take_001_cam01",
+    "TDUY_session_20261027_1124_L1_take_001_cam02",
+    "TDUY_session_20261027_1124_L1_take_002_cam01",
+    "TDUY_session_20261027_1124_L1_take_002_cam02",
+    "TDUY_session_20261027_1124_L1_take_003_cam01",
+    "TDUY_session_20261027_1124_L1_take_003_cam02",
+    "TRUONG_session_20261027_1124_L4_take_001_cam01",
+    "TRUONG_session_20261027_1124_L4_take_001_cam02"
+  ],
+  "pose_models_from_raw_summaries": {
+    "yolo11n-pose.pt": 146
+  },
+  "valid_raw_frames": 12327,
+  "inspected_raw_frames": 13636,
+  "raw_frame_status": {
+    "ok": 12327,
+    "ambiguous_multiple_people": 725,
+    "unassigned_track": 441,
+    "selected_track_missing": 143
+  },
+  "manifest_status_vs_metadata": {
+    "camera_status_matched": 176,
+    "take_status_differs": 170
+  },
+  "video_capture_timing_mismatches": 175,
+  "timing_examples": [
+    {
+      "clip": "CHANH_session_20261027_1124_L0_take_001_cam01",
+      "encoded_duration_to_capture_span_ratio": 1.525
+    },
+    {
+      "clip": "CHANH_session_20261027_1124_L0_take_001_cam02",
+      "encoded_duration_to_capture_span_ratio": 1.525
+    },
+    {
+      "clip": "CHANH_session_20261027_1124_L1_take_001_cam01",
+      "encoded_duration_to_capture_span_ratio": 1.537
+    },
+    {
+      "clip": "CHANH_session_20261027_1124_L1_take_001_cam02",
+      "encoded_duration_to_capture_span_ratio": 1.517
+    },
+    {
+      "clip": "CHANH_session_20261027_1124_L2_take_001_cam01",
+      "encoded_duration_to_capture_span_ratio": 1.511
+    },
+    {
+      "clip": "CHANH_session_20261027_1124_L2_take_001_cam02",
+      "encoded_duration_to_capture_span_ratio": 1.533
+    },
+    {
+      "clip": "CHANH_session_20261027_1124_L3_take_001_cam01",
+      "encoded_duration_to_capture_span_ratio": 1.519
+    },
+    {
+      "clip": "CHANH_session_20261027_1124_L3_take_001_cam02",
+      "encoded_duration_to_capture_span_ratio": 1.518
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "decoded_videos_checked": false
+}

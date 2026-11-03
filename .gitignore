@@ -1,0 +1,18 @@
+# Keep private data, model binaries, backups and generated runs local.
+artifacts/
+collector/Real_Posture_Dataset/recordings/
+collector/Real_Posture_Dataset/processed/
+collector/Real_Posture_Dataset/config/cameras.json
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.pt
+*.pth
+*.onnx
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+.venv/
+*.log

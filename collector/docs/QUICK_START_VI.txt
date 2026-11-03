@@ -1,0 +1,78 @@
+# PoseForge V3 — Chạy collector trên Ubuntu 22.04
+
+Dùng Conda `lab2_imp`. Mọi lệnh chạy từ root `~/truong_CODE/lab2_imp`.
+
+## 1. Chạy ứng dụng
+
+```bash
+cd ~/truong_CODE/lab2_imp
+conda activate lab2_imp
+DATA="$PWD/artifacts/dataset_backup/Real_Posture_Dataset"
+bash scripts/run_collector.sh --data "$DATA"
+```
+
+Đổi `DATA` sang đúng working dataset nếu máy dùng đường dẫn khác. Ứng dụng không tự chọn dataset backup. **Không sửa ZIP gốc trên Drive.**
+
+## 2. Thu thêm dữ liệu
+
+1. **Cameras:** sửa URL của cam01/cam02 → **Save & Connect**; app lưu vào `<DATA>/config/cameras.json`.
+2. **Collect:** chọn người cũ hoặc **+ New person**, session và một trong 6 posture.
+3. **Pose & tracking:** chọn checkpoint thực sự đang có trong `artifacts/pretrained/` (YOLO11n/m hoặc MediaPipe) và tracker ByteTrack cho YOLO. Muốn nhìn skeleton thì **Enable pose**; không bật pose vẫn có thể lưu MP4.
+4. Để tự trích raw keypoints sau khi quay, tích **Auto-extract keypoints after saving** và chọn một checkpoint hợp lệ; không cần bật live preview.
+5. **Start / S**, rồi **Stop / E**. Take mới có tên tiếp theo; không ghi đè take đã có.
+
+Raw format vẫn như V1: `*_raw.mp4`, `*_timestamps.csv`, `keypoints/*_yolo17_raw.txt`, `*.summary.json`, `metadata.json`, `tracking_selection.json`, `labels.csv`. Dataset cũ không bị convert hoặc xóa.
+
+## 3. Dataset
+
+Duyệt **Person → Session → Label → Take**. Nhấp take xem số camera và file YOLO17; **Validate all** hoặc chọn người rồi **Validate person**. Validation chỉ đọc.
+
+## 4. Tools — Khôi phục hoặc chạy lại keypoints
+
+- **Missing only:** tìm video thiếu `*_yolo17_raw.txt`; không ghi đè raw file có sẵn. Mặc định dùng YOLO11n để đồng nhất với 146 file raw lịch sử.
+- **Reprocess selection:** chọn Person + ít nhất Session/Label/Take, có thể thu hẹp theo camera. Xem trước số clip rồi xác nhận overwrite. Raw + summary + metadata cũ được backup theo từng run trong `artifacts/reextract_backups/`.
+- MP4, timestamps và `labels.csv` không đổi. Thất bại từng clip được báo và sẽ rollback những file đã thay đổi trong clip đó.
+
+CLI xem trước (không chạy inference):
+
+```bash
+python -B scripts/reextract_pose.py --data "$DATA" \
+  --model artifacts/pretrained/yolo11n-pose.pt --mode missing
+```
+
+Khôi phục các clip thiếu:
+
+```bash
+python -B scripts/reextract_pose.py --data "$DATA" \
+  --model artifacts/pretrained/yolo11n-pose.pt --mode missing --apply
+```
+
+Chạy lại CHANH label 2, cả hai camera, có xác nhận rõ overwrite:
+
+```bash
+python -B scripts/reextract_pose.py --data "$DATA" \
+  --model artifacts/pretrained/yolo11n-pose.pt \
+  --mode selected --person CHANH --label 2 \
+  --apply --confirm-overwrite
+```
+
+**Lưu ý:** Nếu chọn YOLO11m cho một số take trong dataset đang chứa YOLO11n, dataset sẽ có hai nguồn trích xuất. Cần chọn một checkpoint thống nhất trước khi tạo input train. Script Missing Only tự chặn việc trộn này.
+
+## 5. Tools — Split
+
+- **Subject-wise:** chọn người cho tập Test, tùy chọn người Validation; còn lại Train. Đây là chế độ dùng cho Lab.
+- **Within-person:** chia các đoạn không chồng lặp dựa trên capture timestamps, đồng bộ hai camera thuộc cùng take. Chỉnh % Train/Val; phần còn lại là Test. Đây là mode thử nghiệm riêng, **không dùng để báo cáo Lab subject-wise**.
+- Bấm **Preview split**, sau đó **Export manifest**. Output trong `artifacts/dataset_outputs/split_runs/<run_id>/`, mỗi run có `train.csv`, `val.csv`, `test.csv`, `split_config.json`. Không ghi vào `<DATA>/splits/`, không sửa source.
+
+Clip ngắn có thể không đủ 16 frame trong cả 3 tập để train GRU. Xem warnings trong `split_config.json` trước khi dùng. Train và xử lý chuẩn cuối cùng vẫn thực hiện trên Colab, output Drive `truongedu/`.
+
+## 6. Test và kiểm tra dữ liệu
+
+```bash
+bash scripts/test_v3.sh
+python -B scripts/preflight_dataset.py --data "$DATA" --decode-videos
+```
+
+Preflight lịch sử trước recovery: 176 camera clips, 88 takes, 13 người; 146 raw YOLO17 và 30 clip thiếu; 0 schema errors. 146 raw summaries khai báo YOLO11n. Trên hai camera CHANH, chạy lại YOLO11n lệch median 0,01–0,02 px so với raw. Các thông số đó là baseline lịch sử, không phải yêu cầu mọi take mới phải giống hệt.
+
+Không Git track: `docs/`, `collector/docs/`, `artifacts/`.

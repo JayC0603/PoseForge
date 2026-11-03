@@ -1,0 +1,13 @@
+{
+  "seed": 302,
+  "dropout": 0.15,
+  "lr": 0.001,
+  "weight_decay": 0.001,
+  "batch_size": 128,
+  "epochs": 100,
+  "patience": 12,
+  "class_weight": "none",
+  "label_smoothing": 0.0,
+  "quota": 0,
+  "balance": "none"
+}

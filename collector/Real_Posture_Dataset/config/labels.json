@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "labels": [
+    {
+      "id": 0,
+      "name": "Ngồi thẳng",
+      "key": "sitting_straight"
+    },
+    {
+      "id": 1,
+      "name": "Cúi gập / gù lưng",
+      "key": "hunched_forward"
+    },
+    {
+      "id": 2,
+      "name": "Gục xuống bàn",
+      "key": "head_on_desk"
+    },
+    {
+      "id": 3,
+      "name": "Ngả người ra sau",
+      "key": "leaning_backward"
+    },
+    {
+      "id": 4,
+      "name": "Nghiêng / quay sang bên",
+      "key": "turning_sideways"
+    },
+    {
+      "id": 5,
+      "name": "Giơ tay phát biểu",
+      "key": "raising_hand"
+    }
+  ]
+}
